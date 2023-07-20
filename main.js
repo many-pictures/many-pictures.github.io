@@ -43,12 +43,12 @@ addEventListener("resize", (_event) => {
 addEventListener("wheel", (event) => {
     if (event.deltaY > 0) {
         speed += DEFAULT_SPEED;
-        if (speed > 6 * DEFAULT_SPEED)
-            speed = 6 * DEFAULT_SPEED;
+        if (speed > 10 * DEFAULT_SPEED)
+            speed = 10 * DEFAULT_SPEED;
     } else if (event.deltaY < 0) {
         speed -= DEFAULT_SPEED;
-        if (speed < -DEFAULT_SPEED)
-            speed = -DEFAULT_SPEED;
+        if (speed < -2 * DEFAULT_SPEED)
+            speed = -2 * DEFAULT_SPEED;
     }
 });
 
@@ -291,7 +291,7 @@ function downloadNextImage() {
 }
 
 const PREEMPTIVE_PX = 400;
-const DEFAULT_SPEED = 3;
+const DEFAULT_SPEED = 2;
 var speed = DEFAULT_SPEED;
 requestAnimationFrame(update);
 function update() {
