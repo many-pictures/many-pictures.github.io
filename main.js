@@ -247,7 +247,7 @@ function downloadNextImage() {
         div2.style.position = "relative";
         div2.style.top = "-68px";
 
-        let number = document.createElement("p");
+        let number = document.createElement("a");
         number.innerText = json.hits[0].id;
         number.id = "large";
         number.classList.add("text");
@@ -258,6 +258,8 @@ function downloadNextImage() {
         number.style.verticalAlign = "top";
         number.style.marginTop = "0px";
         number.style.fontFamily = "ShipporiMinchoB1-ExtraBold";
+        number.style.textDecoration = "none";
+        number.href = json.hits[0].pageURL;
         div2.appendChild(number);
 
         let div3 = document.createElement("div");
