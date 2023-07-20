@@ -119,7 +119,7 @@ function decryptAndUpdate() {
         } else {
             setTimeout(() => {
                 startDownloadingImages = true;
-            }, 900);
+            }, 100);
             return true;
         }
     } catch(err) {
@@ -292,7 +292,7 @@ function downloadNextImage() {
     }
 }
 
-const PREEMPTIVE_PX = 400;
+const PREEMPTIVE_PX = 300;
 const DEFAULT_SPEED = 2;
 var speed = DEFAULT_SPEED;
 requestAnimationFrame(update);
@@ -300,23 +300,18 @@ function update() {
     // move images upwards at 1px/s
     let children = document.getElementById("photos").children;
     let garbage = [];
-    for (let child of children) {
-        if (child.hidden == false) {
-            let div = child;
-            let img = child.firstChild;
+    for (let div of children) {
+        if (div.hidden == false) {
             div.style.top = String(parseInt(div.style.top) - speed) + "px";
 
-            if (parseInt(div.style.top) < -documentHeight * 8) {
-                garbage.push(img);
-            }
+            if (parseInt(div.style.top) < -documentHeight * 6)
+                garbage.push(div);
         }
     }
     
     // clean up any garbage nodes
-    for(let i = 0; i < garbage.length; i++) {
-        let item = garbage[i].parentNode;
-        document.getElementById("photos").removeChild(item);
-    }
+    for(let i = 0; i < garbage.length; i++)
+        document.getElementById("photos").removeChild(garbage[i]);
 
     if (startDownloadingImages) {
         nextImageTopLoc -= speed;
