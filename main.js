@@ -213,9 +213,9 @@ function downloadNextImage() {
             myElem.style.opacity = "1.0";
             myElem.hidden = false;
 
-            nextImageTopLoc = getNextImageTopLoc() + parseInt(myElem.height);
+            nextImageTopLoc = getNextImageTopLoc() + parseInt(myElem.firstChild.height);
 
-            console.log("loaded: id=" + json.hits[0].id + " @top=" + myElem.style.top + " w/ height=" + myElem.height);
+            console.log("loaded: id=" + json.hits[0].id + " @top=" + myElem.style.top + " w/ height=" + myElem.firstChild.height);
 
             waitingForNextImage = false; 
         }
@@ -225,21 +225,58 @@ function downloadNextImage() {
         img.onerror = () => {
             waitingForNextImage = false; 
         }
-        img.id = "img" + String(json.hits[0].id);
         img.src = json.hits[0].largeImageURL;
-        img.style.position = "absolute"; 
-        img.style.width = "100%"; 
-        img.style.opacity = "0.0";
-        img.hidden = true;
+        // TODO: fetch this img and update src in order to get better quality images & bamboozle pixabay! (also load images in parallel to improve speed)
+        // see: https://stackoverflow.com/questions/23609946/img-src-path-with-header-params-to-pass
+        //img.src = "https://pixabay.com/images/download/" + json.hits[0].tags[0] + "-" + json.hits[0].id + ".jpg";
+        img.style.width = "100%";
 
         // TODO: add metadata in a fancy way in the bottom left corner of each image that pops up and 
         // looks fancy fancy fancy (also maybe generate a fancy quote from wikipedia?)
 
         let div = document.createElement("div");
+        div.id = "img" + String(json.hits[0].id);
+        div.style.position = "absolute"; 
+        div.style.opacity = "0.0";
+        div.style.width = "100%";
+        div.hidden = true;
+        
         div.appendChild(img);
 
-        document.getElementById("photos").appendChild(div);
+        let div2 = document.createElement("div");
+        div2.style.position = "relative";
+        div2.style.top = "-68px";
 
+        let number = document.createElement("p");
+        number.innerText = json.hits[0].id;
+        number.id = "large";
+        number.classList.add("text");
+        number.style.marginLeft = "16px";
+        number.style.marginRight = "16px";
+        number.style.fontSize = "2em";
+        number.style.display = "inline-block";
+        number.style.verticalAlign = "top";
+        number.style.marginTop = "0px";
+        number.style.fontFamily = "ShipporiMinchoB1-ExtraBold";
+        div2.appendChild(number);
+
+        let div3 = document.createElement("div");
+        div3.style.display = "inline-block";
+
+        let user = document.createElement("p");
+        user.innerText = json.hits[0].user;
+        user.classList.add("text");
+        div3.appendChild(user);
+
+        let tags = document.createElement("p");
+        tags.innerText = json.hits[0].tags;
+        tags.classList.add("text");
+        div3.appendChild(tags);
+
+        div2.appendChild(div3);
+        div.appendChild(div2);
+
+        document.getElementById("photos").appendChild(div);
     });
 
     nextImageID += 1;
@@ -249,7 +286,7 @@ function downloadNextImage() {
     if (currNumImages < 3) {
         // spawn the initial few
         // TODO: load the images quickly, but in order
-        downloadNextImage();
+        //downloadNextImage();
     }
 }
 
@@ -263,10 +300,11 @@ function update() {
     let garbage = [];
     for (let child of children) {
         if (child.hidden == false) {
+            let div = child;
             let img = child.firstChild;
-            img.style.top = String(parseInt(img.style.top) - speed) + "px";
+            div.style.top = String(parseInt(div.style.top) - speed) + "px";
 
-            if (parseInt(img.style.top) < -documentHeight * 8) {
+            if (parseInt(div.style.top) < -documentHeight * 8) {
                 garbage.push(img);
             }
         }
