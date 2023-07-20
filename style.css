@@ -48,13 +48,13 @@ img {
 
 @font-face {
     font-family: "NotoSansGeorgian-Bold";
-    src: url("https://many-pictures.github.io/NotoSansGeorgian-Bold.ttf");
+    src: url("https://github.com/many-pictures/many-pictures.github.io/raw/main/fonts/NotoSansGeorgian-Bold.ttf");
     font-weight: bold;
 }
 
 @font-face {
     font-family: "NotoSansGeorgian-Medium";
-    src: url("https://many-pictures.github.io/NotoSansGeorgian-Medium.ttf");
+    src: url("https://github.com/many-pictures/many-pictures.github.io/raw/main/fonts/NotoSansGeorgian-Medium.ttf");
     font-weight: 600;
 }
 
@@ -62,12 +62,12 @@ img {
 
 @font-face {
     font-family: "ShipporiMinchoB1-Regular";
-    src: url("https://many-pictures.github.io/fonts/ShipporiMinchoB1-Regular.ttf");
+    src: url("https://github.com/many-pictures/many-pictures.github.io/raw/main/fonts/ShipporiMinchoB1-Regular.ttf");
     font-weight: 600;
 }
 
 @font-face {
     font-family: "ShipporiMinchoB1-ExtraBold";
-    src: url("https://many-pictures.github.io/fonts/ShipporiMinchoB1-ExtraBold.ttf");
+    src: url("https://github.com/many-pictures/many-pictures.github.io/raw/main/fonts/ShipporiMincho-ExtraBold.ttf");
     font-weight: 600;
 }
