@@ -13,14 +13,14 @@ body {
     color: #fff;
     background: linear-gradient(32deg, #228399, #73f0c6);
 
-    font-family: "NotoSansGeorgian-Regular",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 
     transition: opacity 0.9s ease-in;
 }
 
 input {
     margin-top: 4px;
-    font-family: "NotoSansGeorgian-Regular",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
 h1 {
@@ -28,5 +28,5 @@ h1 {
 }
 
 img {
-    transition: opacity 2s ease-in;
+    transition: opacity 1.2s ease-out;
 }
