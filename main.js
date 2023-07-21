@@ -245,7 +245,7 @@ function downloadNextImage() {
 
         let div2 = document.createElement("div");
         div2.style.position = "relative";
-        div2.style.top = "-68px";
+        div2.style.top = "-58px";
 
         let number = document.createElement("a");
         number.innerText = json.hits[0].id;
