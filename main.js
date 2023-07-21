@@ -281,7 +281,13 @@ function downloadNextImage() {
         document.getElementById("photos").appendChild(div);
     });
 
-    nextImageID += 1;
+    if (nextImageID == 1150) {
+        // i know there are no images here & it will mess up existing peoples' runs if it waits too long
+        nextImageID += 1650;
+    } else {
+        nextImageID += 1;
+    }
+
     setCookie("id", nextImageID, COOKIE_TIME);
 
     currNumImages += 1;
